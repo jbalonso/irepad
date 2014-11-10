@@ -18,14 +18,8 @@ adduser --ingroup builder --disabled-password --gecos "BUILD USER" --uid $SELF_U
 # Prepare the local build environment
 cd $(dirname $0)
 sudo -u builder -H npm install
-sudo -u builder -H bower install --config.interactive=false
+export PATH="${PWD}/node_modules/.bin:${PATH}"
+sudo -u builder -H /usr/bin/env PATH="$PATH" bower install --config.interactive=false
 
 # Build
-sudo -u builder -H grunt
-
-# Prepare a tarball (n.b. if this file is in the root of the volume, tar,
-# for some reason, hits a 'permission denied' error if it tries to create
-# a tarball directly inside that directory, so we prepare the tarball in
-# /tmp and move it over with root permissions)
-sudo -u builder -H tar -czvf /tmp/dist.tar.gz dist/
-mv /tmp/dist.tar.gz $(dirname $0)
+sudo -u builder -H /usr/bin/env PATH="$PATH" grunt
