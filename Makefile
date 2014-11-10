@@ -1,4 +1,4 @@
-IMAGE=j.hack:5000/ui-base
+IMAGE=dockerfile/nodejs-bower-grunt
 
 .PHONY: build pull push
 
