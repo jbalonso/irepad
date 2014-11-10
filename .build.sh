@@ -18,7 +18,7 @@ adduser --ingroup builder --disabled-password --gecos "BUILD USER" --uid $SELF_U
 # Prepare the local build environment
 cd $(dirname $0)
 sudo -u builder -H npm install
-sudo -u builder -H bower install --allow-root --config.interactive=false
+sudo -u builder -H bower install --config.interactive=false
 
 # Build
 sudo -u builder -H grunt
