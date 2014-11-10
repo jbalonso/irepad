@@ -33,4 +33,8 @@ module.exports = function(grunt){
     grunt.registerTask('default', [
         'coffee', 'bower'
     ]);
+
+    grunt.registerTask('develop', [
+        'default', 'watch'
+    ]);
 };
